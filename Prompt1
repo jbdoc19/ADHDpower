@@ -1,0 +1,296 @@
+Build a local-first web app in Replit that turns my exported ChatGPT archive into a personal self-improvement system.
+
+Project goal:
+Use my ChatGPT archive to build a practical self-improvement engine that helps me detect patterns, reduce overwhelm, improve follow-through, and support better decisions in real time. This is not a generic journaling app, chatbot wrapper, or searchable transcript viewer. It should function like an external executive function system and cognitive co-regulator.
+
+Critical file/storage constraint:
+All ChatGPT archive files will be housed locally inside the project environment and processed from local storage only.
+Do not assume cloud storage, external databases, or remote file hosting.
+The app should ingest and process local files from a folder such as `/data/chatgpt_archive/` or similar.
+Design for local file parsing first.
+If persistence is needed, prefer a lightweight local database such as SQLite.
+Do not require third-party services for the MVP.
+
+User profile the system is designed for:
+- High-performance physician
+- Single father
+- ADHD traits including time blindness, executive dysfunction, variable motivation, overwhelm, avoidance, and shame loops
+- Benefits from low-friction structure, practical outputs, fast task initiation, and simple repeatable systems
+- Does poorly with vague advice, heavy maintenance, guilt framing, and overly complex dashboards
+
+What the app must do:
+The app should convert the local archive into a living “Operating Manual” and use that manual to support future action.
+
+Core functions:
+
+1. Pattern Detection
+Analyze archived chats and detect recurring patterns such as:
+- what helps me start quickly
+- what causes paralysis or avoidance
+- what triggers shame, overwhelm, or shutdown
+- what types of tasks I avoid
+- what prompting styles help me move
+- energy patterns
+- time-estimation errors
+- recurring goals
+- friction points across work, parenting, health, and self-management
+- signs of overload or burnout
+- routines and environments that help or hurt
+
+2. Rescue and Regulation
+Extract interventions that work when I get stuck, including:
+- morning activation strategies
+- no-phone starts
+- movement, sunlight, music, novelty, body-based activation
+- body doubling
+- rapid triage under pressure
+- scripts for overwhelm
+- shrinking tasks to a first step under 5 minutes
+- ways to reduce dread and restart momentum
+
+3. Decision Support
+Generate practical outputs such as:
+- what matters most right now
+- the single next step
+- what can be delayed, delegated, or dropped
+- realistic task estimates
+- scripts for difficult conversations
+- concise weekly adjustments
+- reminders of what has worked before in similar situations
+
+Product principles:
+- local-first
+- neuro-affirming
+- low friction
+- plain English
+- action-focused
+- built for bad days, not ideal days
+- one thing at a time
+- reduce cognitive load
+- reduce activation energy
+- end key outputs with one immediate step that can be done in under 5 minutes
+- support interest-based motivation, not just importance-based motivation
+
+What the app should produce:
+
+A. Operating Manual
+A structured, editable document built from the archive, with sections such as:
+- Starts me fast
+- Derails me fast
+- Early overload signs
+- Rescue prompts that work
+- Realistic focus windows
+- Reusable scripts
+- Time blindness patterns
+- Decision traps
+- Best routines
+- Recurring priorities
+- Known friction points
+
+B. Archive Analysis Workflow
+A repeatable process that scans local archive files and updates the Operating Manual by extracting:
+- wins
+- failures
+- triggers
+- bottlenecks
+- emotional patterns
+- task-initiation successes
+- time-estimation misses
+- useful prompts
+- useful routines
+- useful scripts
+- top 3 adjustments for next week
+
+C. Weekly Review Engine
+A weekly summary that answers:
+- What worked?
+- What failed repeatedly?
+- What am I underestimating?
+- What am I avoiding?
+- What helped me start?
+- What should change next week?
+- What is the single most important adjustment?
+End with one next step under 5 minutes.
+
+D. Stuck Mode / Meltdown Shield
+A mode that activates when I feel overwhelmed and:
+- validates stress briefly
+- cuts complexity immediately
+- identifies the single next action
+- shrinks it until it is doable in under 5 minutes
+- offers only 2 to 3 rescue options
+- reduces shame and decision load
+- avoids long plans
+
+E. Daily Focus Support
+Include support for:
+- body doubling
+- work sprints
+- rapid triage
+- novelty-based activation
+- gentle accountability
+- realistic planning based on past behavior instead of ideal plans
+
+Do not build:
+- a giant transcript browser and call that success
+- a generic self-help dashboard
+- a sentiment-analysis toy without action outputs
+- long summaries that do not lead to decisions
+- a system that depends on consistency or heavy manual upkeep
+
+Build requirements:
+Design and implement the app with these components:
+
+1. Local ingestion layer
+- Read ChatGPT export files from a local folder
+- Support common export formats such as JSON, HTML, or markdown if possible
+- Detect conversations, timestamps, titles, participants/roles, and message content
+- Normalize parsed conversations into a structured internal format
+
+2. Local storage
+- Use SQLite for the MVP
+- Store:
+  - conversations
+  - messages
+  - extracted patterns
+  - operating manual sections
+  - weekly reviews
+  - rescue prompts
+  - reusable scripts
+  - tags and metadata
+
+3. Analysis pipeline
+Create a pipeline that:
+- parses local archive files
+- chunks meaningful conversations or sections
+- extracts patterns into predefined categories
+- updates the Operating Manual
+- generates weekly summaries and stuck-mode suggestions
+
+4. Tagging schema
+Use tags such as:
+- start-helpful
+- derailer
+- overload-sign
+- shame-trigger
+- avoidance-pattern
+- rescue-strategy
+- effective-prompt
+- time-blindness
+- focus-window
+- script-work
+- script-parenting
+- script-self-talk
+- burnout-signal
+- recurring-goal
+- friction-point
+- win
+- failed-loop
+
+5. Pattern categories
+Use these default categories:
+- initiation
+- avoidance
+- emotional regulation
+- time blindness
+- planning accuracy
+- focus stamina
+- stress load
+- work friction
+- parenting friction
+- health routines
+- recovery patterns
+- effective interventions
+
+6. Interface
+Build a clean local web app with these views:
+- Home Dashboard
+- Operating Manual
+- Archive Import / Sync
+- Weekly Review
+- Stuck Mode
+- Pattern Explorer
+
+Interface goals:
+- minimal
+- fast
+- readable
+- not cluttered
+- low decision load
+- one main action per screen
+
+7. Dashboard
+The dashboard should show:
+- today’s suggested next step
+- current top friction pattern
+- one rescue prompt
+- most useful recent insight
+- weekly adjustment in one sentence
+
+8. Stuck Mode logic
+When triggered manually, show:
+- one sentence of validation
+- one most important next action
+- a version of that action under 5 minutes
+- 2 backup rescue options
+- one optional script or restart prompt
+
+9. Weekly Review logic
+Generate from stored archive analysis:
+- top win
+- top repeated failure
+- top trigger
+- top successful rescue
+- one thing I am underestimating
+- top change for next week
+- one immediate next step under 5 minutes
+
+10. MVP scope
+The MVP should focus on these 6 Operating Manual sections only:
+- Starts me fast
+- Derails me fast
+- Early overload signs
+- Rescue prompts that work
+- Realistic focus windows
+- Reusable scripts
+
+Technical recommendations:
+- Use Python with Flask or FastAPI for the backend
+- Use SQLite for local persistence
+- Use a simple frontend that Replit can run easily
+- Prefer server-rendered templates or a very light frontend over a complex SPA for MVP
+- Keep architecture modular so later AI analysis improvements can be added
+- Include sample local folder paths in config
+- Include a clear setup script and README
+
+Implementation tasks:
+1. Define the SQLite schema
+2. Build the local archive importer
+3. Build the parser/normalizer
+4. Build the pattern extraction pipeline
+5. Build the Operating Manual generator/updater
+6. Build the weekly review generator
+7. Build the stuck-mode generator
+8. Build the dashboard and core views
+9. Seed the app with sample data structures
+10. Document how to add new local archive files and re-run analysis
+
+Output I want from you:
+- recommended app architecture
+- file/folder structure
+- database schema
+- ingestion/parsing strategy
+- analysis workflow
+- UI plan
+- MVP implementation plan
+- then generate the actual starter code in Replit
+
+Default recommendation rules:
+- pick one stack and justify it briefly
+- choose simplicity over extensibility for MVP
+- optimize for low friction and local reliability
+- do not ask broad product questions unless absolutely necessary
+- make sensible defaults and proceed
+
+Final build behavior:
+Start by proposing the architecture and file structure, then generate the MVP codebase.
